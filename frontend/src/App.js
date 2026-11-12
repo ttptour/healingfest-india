@@ -1,55 +1,51 @@
 import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import Lenis from "lenis";
+import { Toaster } from "@/components/ui/sonner";
+import Nav from "./components/Nav";
+import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
+import Intro from "./components/Intro";
+import Pillars from "./components/Pillars";
+import HealingDays from "./components/HealingDays";
+import Heartfulness from "./components/Heartfulness";
+import Schedule from "./components/Schedule";
+import Venue from "./components/Venue";
+import EnquiryForm from "./components/EnquiryForm";
+import Footer from "./components/Footer";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
+function App() {
   useEffect(() => {
-    helloWorldApi();
+    const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    window.__lenis = lenis;
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      window.__lenis = null;
+    };
   }, []);
 
   return (
-    // The marker attribute below lets the platform probe detect the stock splash — remove it with this page
-    <div data-emergent-splash>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="grain bg-[#F8F5F0] text-[#1A2421] antialiased">
+      <Nav />
+      <main>
+        <Hero />
+        <Marquee />
+        <Intro />
+        <Pillars />
+        <HealingDays />
+        <Heartfulness />
+        <Schedule />
+        <Venue />
+        <EnquiryForm />
+      </main>
+      <Footer />
+      <Toaster position="bottom-right" richColors />
     </div>
   );
 }

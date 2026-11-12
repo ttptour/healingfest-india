@@ -1,0 +1,121 @@
+{
+  "project_name": "Soma Veda - International Healing Retreat in India",
+  "archetype": "ORGANIC & EARTHY / LUXURY SANCTUARY",
+  "theme": "Light Warm Earthy with Antique Gold Accents",
+  "typography": {
+    "font_family_heading": "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+    "font_family_body": "'Plus Jakarta Sans', 'Manrope', -apple-system, sans-serif",
+    "font_family_mono": "'JetBrains Mono', monospace",
+    "headline_sizes": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-light tracking-tight leading-[1.1]",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-serif font-normal tracking-tight text-[#1A2421]",
+      "subsection_h3": "text-xl sm:text-2xl font-serif font-medium text-[#1A2421]",
+      "card_h4": "text-lg sm:text-xl font-sans font-semibold text-[#1A2421]"
+    },
+    "body_sizes": {
+      "large": "text-lg sm:text-xl font-sans text-[#3D4A41] leading-relaxed",
+      "base": "text-base font-sans text-[#4A554D] leading-relaxed",
+      "small": "text-sm font-sans text-[#6B776E]",
+      "caption": "text-xs font-mono uppercase tracking-[0.25em] text-[#C5A059]"
+    }
+  },
+  "colors": {
+    "background_primary": "#F8F5F0",
+    "background_secondary": "#EFECE6",
+    "background_card": "#FFFFFF",
+    "background_dark": "#131C18",
+    "text_primary": "#1A2421",
+    "text_secondary": "#4A554D",
+    "text_muted": "#7A877E",
+    "accent_gold": "#C5A059",
+    "accent_gold_hover": "#A8833E",
+    "accent_gold_light": "#F4ECE1",
+    "terracotta": "#9E5A3C",
+    "forest_green": "#2C3E35",
+    "border_subtle": "#E2DDD5",
+    "border_gold": "rgba(197, 160, 89, 0.3)"
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous (p-6, p-8, p-12, p-16, p-24, p-32)",
+    "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "bento_grid_pillars": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6 lg:gap-8",
+    "bento_spans": {
+      "pillar_1_hero": "col-span-1 md:col-span-8 lg:col-span-8 row-span-2",
+      "pillar_2_tall": "col-span-1 md:col-span-4 lg:col-span-4 row-span-2",
+      "pillar_3_square": "col-span-1 md:col-span-6 lg:col-span-6",
+      "pillar_4_square": "col-span-1 md:col-span-6 lg:col-span-6"
+    }
+  },
+  "motion_and_effects": {
+    "smooth_scroll": "Lenis smooth scrolling with dampening 0.1",
+    "hero_reveal": "Kinetic masked line-by-line reveal using Framer Motion y-axis translate from 100% to 0% with overflow hidden parent",
+    "marquee": "Slow editorial ribbon using react-fast-marquee or CSS keyframes, speed 25s, low-contrast serif font, massive horizontal gaps (gap-24)",
+    "scroll_reveals": "Framer motion viewport opacity + y-offset transition (initial opacity 0, y: 30; animate in-view opacity 1, y: 0, duration 0.8s, ease Out)",
+    "parallax": "Subtle y-axis transform (-10% to 10%) on high-resolution retreat photography during scroll"
+  },
+  "key_sections": {
+    "navigation_header": {
+      "style": "Fixed top-0 z-50 backdrop-blur-md bg-[#F8F5F0]/80 border-b border-[#E2DDD5]",
+      "components": "Brand logo 'SOMA VEDA', Navigation links (Overview, Pillars, Schedule, Venue, Experience), CTA Button 'Reserve Sanctuary'",
+      "accessibility": "High contrast navigation items, data-testid='nav-main'"
+    },
+    "hero_section": {
+      "style": "Relative min-h-screen flex flex-col justify-between pt-32 pb-16 px-6 overflow-hidden bg-[#F8F5F0]",
+      "elements": "Kinetic line reveal headline: 'AN ANCIENT RECLAIM OF BODY & SOUL', Subtitle, Gold-accent CTA 'Begin Journey', High-resolution hero background image with dark vignette blend overlay (max bg-black/40)",
+      "data_testid": "hero-section"
+    },
+    "editorial_marquee": {
+      "text_items": ["AYURVEDIC PANCHAKARMA", "VEDIC MEDITATION", "CONSCIOUS YOGIC NUTRITION", "SACRED SOUND & ENERGY HEALING", "HIMALAYAN FOOTHILLS SANCTUARY"],
+      "style": "py-6 border-y border-[#E2DDD5] bg-[#EFECE6] text-[#2C3E35] font-serif text-sm tracking-[0.2em] uppercase"
+    },
+    "pillars_bento": {
+      "title": "FOUR PILLARS OF TRANSCENDENCE",
+      "description": "Custom Bento-grid presenting Ayurveda, Vedic Meditation, Sattvic Gastronomy, and Energy Restoration with rich imagery and interactive details.",
+      "data_testid": "pillars-bento-grid"
+    },
+    "schedule_timeline": {
+      "title": "THE 6-DAY TRANSFORMATIONAL JOURNEY",
+      "type": "Interactive Day Selector (Day 1 - Day 6 Tabs with smooth animated content transition)",
+      "data_testid": "schedule-timeline-section"
+    },
+    "venue_gallery": {
+      "title": "THE SANCTUARY AT RISHIKESH",
+      "style": "Deliberately treated photography with subtle warm filter, gold caption tags, location highlight overlay",
+      "data_testid": "venue-gallery-section"
+    },
+    "enquiry_form": {
+      "title": "REQUEST YOUR PRIVATE INVITATION",
+      "components": "Customized Shadcn Form Inputs (Full Name, Email, Country, Preferred Retreat Dates via DatePicker, Healing Objectives Checklist, Special Dietary Needs, Submit CTA)",
+      "style": "Bg-[#FFFFFF] p-8 md:p-12 rounded-2xl border border-[#C5A059]/30 shadow-xl max-w-3xl mx-auto",
+      "data_testid": "enquiry-form-section"
+    },
+    "footer": {
+      "style": "bg-[#131C18] text-[#F8F5F0] pt-24 pb-12 px-6 border-t border-[#C5A059]/20",
+      "elements": "Massive background typographic watermark 'SOMA VEDA', Quick links, Contact details in Rishikesh & International offices, Newsletter signup with gold accent, Copyright notice",
+      "data_testid": "footer-section"
+    }
+  },
+  "image_urls": {
+    "hero": "https://images.unsplash.com/photo-1715405156346-9cc4d4a94ff9?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "meditation_outdoors": "https://images.unsplash.com/photo-1758797316894-c25b94e8426a?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "yoga_group": "https://images.unsplash.com/photo-1758797315487-b3b225dff7d8?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "spa_candles_bath": "https://images.unsplash.com/photo-1781736363509-a2327b675a03?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "spa_lounge_pool": "https://images.unsplash.com/photo-1776763018829-ad685e621871?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "river_healing": "https://images.unsplash.com/photo-1702047327298-548db58c9854?crop=entropy&cs=srgb&fm=jpg&q=85"
+  },
+  "instructions_to_main_agent": [
+    "Ensure Lenis smooth scroll and Framer Motion are imported and initialized smoothly in JS files.",
+    "Do NOT use pure #000000 or generic tech blue (#1B93A4) or purple (#7351B7). Stick rigidly to warm ivory (#F8F5F0), deep forest dark (#131C18), and antique gold (#C5A059).",
+    "All headings must use Cormorant Garamond or Playfair Display. Do NOT use Inter for main headings.",
+    "Add 'data-testid' to all interactive controls, form fields, tabs, navigation links, and primary section headers.",
+    "Form inputs must use customized Shadcn/UI or Tailwind components with focus states matching gold ring border (#C5A059).",
+    "Never use generic placeholder images or broken links. Use the provided Unsplash URLs in image_urls."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Avoid AI slop aesthetic: refrain from basic centered layouts, repetitive cards, or generic gradients.",
+    "Ensure high contrast compliance (APCA / WCAG AA) for all text against light and dark backgrounds.",
+    "Maintain generous padding (p-8 to p-16) on all section containers to reflect high-end luxury.",
+    "Add interactive hover micro-animations on buttons and cards (e.g. scale 1.02, gold subtle glow, border transition).",
+    "All test attributes must follow kebab-case format, e.g., data-testid='enquiry-submit-btn'."
+  ]
+}
