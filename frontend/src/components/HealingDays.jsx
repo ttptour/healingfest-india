@@ -2,7 +2,7 @@ import { Reveal, SectionHead } from "./shared";
 import { HEALING_DAYS } from "./data";
 
 const BOWLS_IMG =
-  "https://static.prod-images.emergentagent.com/jobs/c9363e39-1266-4b7e-b4bf-3bc838b5f14e/images/44b244535e58138b4f7d19bbd48b74d0ffea5993c0110918e37aa604ec3e43f6.jpeg";
+  "https://healingfestival.eu/wp-content/uploads/2026/09/anahata-healing-festival-004.webp";
 
 const HealingDays = () => (
   <section id="healing" className="py-24 sm:py-32" data-testid="healing-section">
@@ -13,7 +13,7 @@ const HealingDays = () => (
             <div className="absolute -bottom-4 -left-4 h-full w-full rounded-2xl bg-[#F4ECE1]" aria-hidden="true" />
             <img
               src={BOWLS_IMG}
-              alt="Sound healing bowls and Ayurvedic vessels"
+              alt="Sound healing session with singing bowls by candlelight"
               className="relative rounded-2xl w-full h-[380px] lg:h-[480px] object-cover shadow-xl"
               data-testid="healing-image"
             />

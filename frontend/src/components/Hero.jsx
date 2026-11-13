@@ -5,7 +5,7 @@ import { EVENT } from "./data";
 import { EASE, scrollToId } from "./shared";
 
 const HERO_IMG =
-  "https://static.prod-images.emergentagent.com/jobs/c9363e39-1266-4b7e-b4bf-3bc838b5f14e/images/102affe1a0cbf69d13b5a993af6ca24694db2bfb18ff18b3a1bfa30a6a63c127.jpeg";
+  "https://customer-assets-wrfwihn1.emergentagent.net/job_healingfest-india--3hagm982/artifacts/157b306c146086af_stillness-kanha.webp";
 
 const lineReveal = (i) => ({
   initial: { y: "115%" },
@@ -30,23 +30,29 @@ const Hero = () => {
       <motion.div style={{ y: imgY }} className="absolute inset-0">
         <img
           src={HERO_IMG}
-          alt="Golden dawn over a healing retreat in India"
-          className="h-[115%] w-full object-cover"
+          alt="Aerial view of the meditation domes at Kanha Shanti Vanam with the Indian flag"
+          className="h-[115%] w-full object-cover object-center"
         />
       </motion.div>
       <motion.div style={{ opacity: overlayOpacity }} className="absolute inset-0 bg-gradient-to-b from-[#131C18]/70 via-[#131C18]/45 to-[#131C18]/80" />
 
       <div className="relative flex-1 flex flex-col justify-end max-w-7xl mx-auto w-full px-5 sm:px-8 pt-32 pb-14">
-        <motion.p {...fade(0.25)} className="eyebrow !text-[#E8CB96] mb-6" data-testid="hero-eyebrow">
-          International Healing Workshop · Mind, Body & Soul
+        <motion.p {...fade(0.25)} className="eyebrow !text-[#E8CB96] mb-5" data-testid="hero-eyebrow">
+          Mind, Body & Soul · A Six-Day Journey
         </motion.p>
 
-        <h1 className="font-display text-[#F8F5F0] font-medium leading-[0.98] tracking-tight text-5xl sm:text-7xl lg:text-[6.5rem]">
+        <p className="font-display italic text-[#E8CB96] text-2xl sm:text-3xl lg:text-4xl mb-2" data-testid="hero-kicker">
           <span className="block overflow-hidden pb-1">
-            <motion.span {...lineReveal(0)} className="block">Come Home</motion.span>
+            <motion.span {...lineReveal(0)} className="block">Come Home to Yourself</motion.span>
+          </span>
+        </p>
+
+        <h1 className="font-display text-[#F8F5F0] font-medium leading-[1.02] tracking-tight text-4xl sm:text-6xl lg:text-[5.2rem]">
+          <span className="block overflow-hidden pb-1">
+            <motion.span {...lineReveal(1)} className="block">International Healing</motion.span>
           </span>
           <span className="block overflow-hidden pb-2">
-            <motion.span {...lineReveal(1)} className="block italic text-[#E8CB96]">to Yourself</motion.span>
+            <motion.span {...lineReveal(2)} className="block italic text-[#E8CB96]">Workshop</motion.span>
           </span>
         </h1>
 

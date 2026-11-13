@@ -2,7 +2,7 @@ import { Reveal, SectionHead } from "./shared";
 import { INTRO } from "./data";
 
 const INTRO_IMG =
-  "https://images.pexels.com/photos/13044308/pexels-photo-13044308.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  "https://healingfestival.eu/wp-content/uploads/2024/12/D3BC0B34-BA44-4009-899E-E793A1260C33.webp";
 
 const Intro = () => (
   <section id="overview" className="py-24 sm:py-32" data-testid="intro-section">
@@ -40,7 +40,7 @@ const Intro = () => (
           <div className="absolute -top-4 -right-4 h-full w-full rounded-2xl border border-[#C5A059]/40" aria-hidden="true" />
           <img
             src={INTRO_IMG}
-            alt="Meditation by the river at dusk in India"
+            alt="A guest embracing the morning air at the retreat"
             className="relative rounded-2xl w-full h-[420px] lg:h-[540px] object-cover shadow-2xl"
             data-testid="intro-image"
           />
