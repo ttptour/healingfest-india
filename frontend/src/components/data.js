@@ -7,7 +7,8 @@ export const EVENT = {
   venue: "The Pearl Hotels, Kanha Shanti Vanam, Hyderabad",
   focus: ["Yoga", "Ayurveda", "Culture", "Stillness"],
   site: "indiahealingretreat.com",
-  email: "dilip.kerala@gmail.com",
+  email: "mail@indiahealingretreat.com",
+  organiser: "The Travel Planners, TC 79/1947, Vallakadavu P.O., Trivandrum 695008, Kerala",
 };
 
 export const INTRO = {

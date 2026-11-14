@@ -49,7 +49,7 @@ const EnquiryForm = () => {
       setForm(initial);
       setErrors({});
     } catch (err) {
-      toast.error(err.response?.data?.detail || "Something went wrong. Please try again.");
+      toast.error(err.response?.data?.detail || "Something went wrong. Please try again, or write to us at mail@indiahealingretreat.com.");
     } finally {
       setSending(false);
     }

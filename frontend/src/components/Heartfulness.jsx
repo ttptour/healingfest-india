@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Reveal, SectionHead, EASE } from "./shared";
 import { HEARTFULNESS_STEPS } from "./data";
 
+// Section retired on request (2026-11-14) — component kept for possible reuse.
 const Heartfulness = () => (
   <section className="py-24 sm:py-32 bg-[#131C18] relative overflow-hidden" data-testid="heartfulness-section">
     <span

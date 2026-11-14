@@ -8,7 +8,6 @@ import Marquee from "./components/Marquee";
 import Intro from "./components/Intro";
 import Pillars from "./components/Pillars";
 import HealingDays from "./components/HealingDays";
-import Heartfulness from "./components/Heartfulness";
 import Schedule from "./components/Schedule";
 import Venue from "./components/Venue";
 import EnquiryForm from "./components/EnquiryForm";
@@ -24,7 +23,6 @@ const Landing = () => (
       <Intro />
       <Pillars />
       <HealingDays />
-      <Heartfulness />
       <Schedule />
       <Venue />
       <EnquiryForm />

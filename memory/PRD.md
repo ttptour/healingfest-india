@@ -37,6 +37,8 @@
 ## Implemented (2026-11-14)
 - Admin Enquiries Inbox at /admin/enquiries: passcode login (admin@indiahealingretreat.com / Kanha@2027, env-seeded), JWT httpOnly cookie session (7d), brute-force lockout, protected GET /api/admin/enquiries, refresh + sign-out
 - Test enquiries cleaned from DB
+- Heartfulness "one step at a time" section removed; footer address changed to The Travel Planners, TC 79/1947, Vallakadavu P.O., Trivandrum 695008, Kerala; contact email changed to mail@indiahealingretreat.com
+- KNOWN BLOCKER: email delivery to mail@indiahealingretreat.com fails — Resend proxy rejects the mailbox as "undeliverable_recipient" (domain works: hello@indiahealingretreat.com accepted). OWNER_EMAIL stays dilip.kerala@gmail.com until the mailbox is created; enquiries save to DB/inbox regardless. Re-point OWNER_EMAIL to mail@indiahealingretreat.com once the mailbox exists.
 
 ## Backlog
 - P1: Admin inbox view of enquiries; WhatsApp button
