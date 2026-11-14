@@ -35,6 +35,7 @@
 - Six real photos from healingfestival.eu/india integrated (pillars, intro, healing-days sections)
 
 ## Implemented (2026-11-14)
+- Global text replace: "Krishnamacharya yoga" → "Heartfulness yoga" across the intro, pillars, all schedule days, and marquee
 - Admin Enquiries Inbox at /admin/enquiries: passcode login (admin@indiahealingretreat.com / Kanha@2027, env-seeded), JWT httpOnly cookie session (7d), brute-force lockout, protected GET /api/admin/enquiries, refresh + sign-out
 - Test enquiries cleaned from DB
 - Heartfulness section removed (2026-11-14), then reinstated (2026-11-15) in the "A new healing practice each day" layout with content left / image right

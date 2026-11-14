@@ -15,7 +15,7 @@ export const INTRO = {
   text1:
     "The International Healing Workshop (Mind, Body & Soul) welcomes you to The Pearl Hotels at Kanha Shanti Vanam, Hyderabad.",
   text2:
-    "Over six days you rise with the dawn, practise Krishnamacharya yoga, settle into Heartfulness meditation, receive an Ayurveda therapy chosen for you by our Ayurveda doctor, and spend your evenings in learning, craft, music and celebration.",
+    "Over six days you rise with the dawn, practise Heartfulness yoga, settle into Heartfulness meditation, receive an Ayurveda therapy chosen for you by our Ayurveda doctor, and spend your evenings in learning, craft, music and celebration.",
   chips: [
     { k: "06", v: "Days of healing" },
     { k: "1,400", v: "Acre green campus" },
@@ -27,7 +27,7 @@ export const PILLARS = [
   {
     num: "01",
     title: "Yoga & Meditation",
-    desc: "Krishnamacharya yoga at sunrise and a Heartfulness session every day.",
+    desc: "Heartfulness yoga at sunrise and a Heartfulness session every day.",
     img: "https://healingfestival.eu/wp-content/uploads/2026/09/DSC07705_WEB.webp",
     span: "md:col-span-7",
     imgH: "h-64 md:h-72",
@@ -105,7 +105,7 @@ export const SCHEDULE = [
     items: [
       ["5:30 AM", "Wake-up"],
       ["5:45 AM", "Detox water"],
-      ["6:00 AM", "Krishnamacharya yoga — the flow of vital energy"],
+      ["6:00 AM", "Heartfulness yoga — the flow of vital energy"],
       ["6:30 AM", "Heartfulness relaxation — Session 1"],
       ["9:00 AM", "Breakfast"],
       ["9:30 & 10:30 AM", "Ayurveda therapy & polarity therapy (in batches)"],
@@ -127,7 +127,7 @@ export const SCHEDULE = [
     items: [
       ["5:30 AM", "Wake-up"],
       ["5:45 AM", "Detox water"],
-      ["6:00 AM", "Krishnamacharya yoga — clarity, calmness & emotional balance"],
+      ["6:00 AM", "Heartfulness yoga — clarity, calmness & emotional balance"],
       ["6:30 AM", "Heartfulness cleaning — Session 2"],
       ["9:00 AM", "Breakfast"],
       ["9:30 & 10:30 AM", "Ayurveda therapy & sound therapy (in batches)"],
@@ -149,7 +149,7 @@ export const SCHEDULE = [
     items: [
       ["5:30 AM", "Wake-up"],
       ["5:45 AM", "Detox water"],
-      ["6:00 AM", "Krishnamacharya yoga — the strength of discernment"],
+      ["6:00 AM", "Heartfulness yoga — the strength of discernment"],
       ["6:30 AM", "Heartfulness prayer — Session 3"],
       ["9:00 AM", "Breakfast"],
       ["9:30 & 10:30 AM", "Ayurveda therapy & quantum therapy (in batches)"],
@@ -171,7 +171,7 @@ export const SCHEDULE = [
     items: [
       ["5:30 AM", "Wake-up"],
       ["5:45 AM", "Detox water"],
-      ["6:00 AM", "Krishnamacharya yoga — deep peace & tranquillity"],
+      ["6:00 AM", "Heartfulness yoga — deep peace & tranquillity"],
       ["6:30 AM", "Group meditation"],
       ["9:00 AM", "Breakfast"],
       ["9:30 & 10:30 AM", "Ayurveda therapy & mudra therapy (in batches)"],
@@ -194,7 +194,7 @@ export const SCHEDULE = [
     items: [
       ["5:30 AM", "Wake-up"],
       ["5:45 AM", "Detox water"],
-      ["6:00 AM", "Krishnamacharya yoga — awakening the body"],
+      ["6:00 AM", "Heartfulness yoga — awakening the body"],
       ["6:30 AM", "Meditation in the world's largest meditation hall"],
       ["9:00 AM", "Breakfast"],
       ["9:30 AM", "Chocolate factory visit"],
@@ -215,7 +215,7 @@ export const VENUE_FEATURES = [
 ];
 
 export const MARQUEE_ITEMS = [
-  "Krishnamacharya Yoga",
+  "Heartfulness Yoga",
   "Ayurveda",
   "Heartfulness",
   "Sound Healing",
