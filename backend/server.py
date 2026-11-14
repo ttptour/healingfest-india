@@ -13,8 +13,10 @@ from typing import List, Optional
 from urllib.parse import urlparse
 
 import httpx
+import jwt
+from datetime import timedelta
 from dotenv import load_dotenv
-from fastapi import FastAPI, APIRouter, Query, Request, HTTPException
+from fastapi import FastAPI, APIRouter, Query, Request, HTTPException, Response
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import ASCENDING, DESCENDING, IndexModel
@@ -36,6 +38,9 @@ INDEXES: dict[str, list[IndexModel]] = {
     "enquiries": [
         IndexModel([("id", ASCENDING)], name="id", unique=True),
         IndexModel([("created_at", DESCENDING)], name="created_at_desc"),
+    ],
+    "admin_login_attempts": [
+        IndexModel([("identifier", ASCENDING)], name="identifier"),
     ],
 }
 
@@ -270,6 +275,97 @@ async def create_enquiry(input: EnquiryCreate, request: Request):
 
 
 logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# Admin auth (single-owner passcode login, JWT session)
+# ---------------------------------------------------------------------------
+JWT_ALGORITHM = "HS256"
+ADMIN_LOCKOUT_MIN = 15
+ADMIN_MAX_FAILS = 5
+
+
+def _admin_token() -> str:
+    payload = {
+        "sub": "admin",
+        "email": os.environ.get("ADMIN_EMAIL", ""),
+        "exp": datetime.now(timezone.utc) + timedelta(days=7),
+        "type": "access",
+    }
+    return jwt.encode(payload, os.environ["JWT_SECRET"], algorithm=JWT_ALGORITHM)
+
+
+async def require_admin(request: Request) -> None:
+    token = request.cookies.get("access_token")
+    if not token:
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header[7:]
+    if not token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    try:
+        payload = jwt.decode(token, os.environ["JWT_SECRET"], algorithms=[JWT_ALGORITHM])
+        if payload.get("sub") != "admin" or payload.get("type") != "access":
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+
+class AdminLogin(BaseModel):
+    email: str = Field(min_length=5, max_length=160)
+    password: str = Field(min_length=1, max_length=120)
+
+
+@api_router.post("/auth/admin-login")
+async def admin_login(input: AdminLogin, request: Request, response: Response):
+    identifier = f"{request.client.host if request.client else 'unknown'}:{input.email.lower()}"
+    rec = await db.admin_login_attempts.find_one({"identifier": identifier}, {"_id": 0})
+    if rec:
+        locked_until = rec.get("locked_until")
+        if locked_until and datetime.now(timezone.utc) < datetime.fromisoformat(locked_until):
+            raise HTTPException(status_code=429, detail="Too many failed attempts. Try again in 15 minutes.")
+
+    ok = (
+        input.email.lower() == os.environ.get("ADMIN_EMAIL", "").lower()
+        and input.password == os.environ.get("ADMIN_PASSWORD", "")
+    )
+    if not ok:
+        fails = (rec.get("fails", 0) if rec else 0) + 1
+        update = {"identifier": identifier, "fails": fails, "updated_at": datetime.now(timezone.utc).isoformat()}
+        if fails >= ADMIN_MAX_FAILS:
+            update["locked_until"] = (datetime.now(timezone.utc) + timedelta(minutes=ADMIN_LOCKOUT_MIN)).isoformat()
+            update["fails"] = 0
+        await db.admin_login_attempts.update_one({"identifier": identifier}, {"$set": update}, upsert=True)
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    await db.admin_login_attempts.delete_one({"identifier": identifier})
+    token = _admin_token()
+    response.set_cookie(
+        key="access_token", value=token, httponly=True, secure=True,
+        samesite="none", max_age=604800, path="/",
+    )
+    return {"ok": True, "email": os.environ.get("ADMIN_EMAIL", "")}
+
+
+@api_router.get("/auth/admin-me")
+async def admin_me(request: Request):
+    await require_admin(request)
+    return {"email": os.environ.get("ADMIN_EMAIL", "")}
+
+
+@api_router.post("/auth/admin-logout")
+async def admin_logout(response: Response):
+    response.delete_cookie(key="access_token", path="/", secure=True, samesite="none")
+    return {"ok": True}
+
+
+@api_router.get("/admin/enquiries")
+async def list_enquiries(request: Request, limit: int = Query(200, ge=1, le=500)):
+    await require_admin(request)
+    docs = await db.enquiries.find({}, {"_id": 0}).sort("created_at", -1).limit(limit).to_list(limit)
+    return {"enquiries": docs}
+
 
 app.include_router(api_router)
 app.add_middleware(

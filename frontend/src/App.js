@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Lenis from "lenis";
 import { Toaster } from "@/components/ui/sonner";
 import Nav from "./components/Nav";
@@ -12,6 +13,25 @@ import Schedule from "./components/Schedule";
 import Venue from "./components/Venue";
 import EnquiryForm from "./components/EnquiryForm";
 import Footer from "./components/Footer";
+import AdminInbox from "./pages/AdminInbox";
+
+const Landing = () => (
+  <>
+    <Nav />
+    <main>
+      <Hero />
+      <Marquee />
+      <Intro />
+      <Pillars />
+      <HealingDays />
+      <Heartfulness />
+      <Schedule />
+      <Venue />
+      <EnquiryForm />
+    </main>
+    <Footer />
+  </>
+);
 
 function App() {
   useEffect(() => {
@@ -32,19 +52,12 @@ function App() {
 
   return (
     <div className="grain bg-[#F8F5F0] text-[#1A2421] antialiased">
-      <Nav />
-      <main>
-        <Hero />
-        <Marquee />
-        <Intro />
-        <Pillars />
-        <HealingDays />
-        <Heartfulness />
-        <Schedule />
-        <Venue />
-        <EnquiryForm />
-      </main>
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/admin/enquiries" element={<AdminInbox />} />
+        </Routes>
+      </BrowserRouter>
       <Toaster position="bottom-right" richColors />
     </div>
   );

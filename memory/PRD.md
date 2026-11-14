@@ -30,6 +30,14 @@
 ## Implemented (2026-11-12)
 - All sections above, enquiry form → DB + email (verified delivered), validation + rate limiting, responsive mobile layout, favicon/SEO/meta
 
+## Implemented (2026-11-13)
+- Hero image replaced with user-attached Kanha Shanti Vanam domes photo; heading restructured ("Come Home to Yourself" kicker above "International Healing Workshop" main heading)
+- Six real photos from healingfestival.eu/india integrated (pillars, intro, healing-days sections)
+
+## Implemented (2026-11-14)
+- Admin Enquiries Inbox at /admin/enquiries: passcode login (admin@indiahealingretreat.com / Kanha@2027, env-seeded), JWT httpOnly cookie session (7d), brute-force lockout, protected GET /api/admin/enquiries, refresh + sign-out
+- Test enquiries cleaned from DB
+
 ## Backlog
 - P1: Admin inbox view of enquiries; WhatsApp button
 - P2: Testimonials once real ones exist; pricing packages if provided; multi-language
