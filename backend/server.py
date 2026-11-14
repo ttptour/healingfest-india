@@ -64,6 +64,7 @@ EMAIL_KEY = os.environ["EMERGENT_EMAIL_KEY"]
 EMAIL_FROM_NAME = os.environ["EMAIL_FROM_NAME"]
 EMAIL_REPLY_TO = os.environ.get("EMAIL_REPLY_TO")
 OWNER_EMAIL = os.environ.get("OWNER_EMAIL")
+ENQUIRY_CC_EMAIL = os.environ.get("ENQUIRY_CC_EMAIL")
 
 _SHORTENERS = ("bit.ly", "tinyurl.com", "t.co", "is.gd", "cutt.ly", "goo.gl", "rebrand.ly")
 _CRED_ASK = ("reply with your password", "reply with the code", "send your password", "cvv",
@@ -266,11 +267,17 @@ async def create_enquiry(input: EnquiryCreate, request: Request):
     email_sent = False
     if OWNER_EMAIL:
         subject = f"New Retreat Enquiry — {input.full_name}"
+        html = _enquiry_html(input, enquiry_id)
         try:
-            await send_email(to=OWNER_EMAIL, subject=subject, html=_enquiry_html(input, enquiry_id))
+            await send_email(to=OWNER_EMAIL, subject=subject, html=html)
             email_sent = True
         except Exception as exc:
-            logger.warning("Enquiry %s saved but email failed: %s", enquiry_id, exc)
+            logger.warning("Enquiry %s saved but owner email failed: %s", enquiry_id, exc)
+        if ENQUIRY_CC_EMAIL:
+            try:
+                await send_email(to=ENQUIRY_CC_EMAIL, subject=subject, html=html)
+            except Exception as exc:
+                logger.warning("Enquiry %s saved but cc email failed: %s", enquiry_id, exc)
     return {"ok": True, "id": enquiry_id, "email_sent": email_sent}
 
 

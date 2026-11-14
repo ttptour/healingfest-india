@@ -53,8 +53,6 @@ const Footer = () => (
                 {EVENT.email}
               </a>
             </li>
-            <li>{EVENT.site}</li>
-            <li>{EVENT.venue}</li>
             <li data-testid="footer-organiser-address">{EVENT.organiser}</li>
             <li>{EVENT.dates}</li>
           </ul>

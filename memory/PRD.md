@@ -37,6 +37,8 @@
 ## Implemented (2026-11-14)
 - Admin Enquiries Inbox at /admin/enquiries: passcode login (admin@indiahealingretreat.com / Kanha@2027, env-seeded), JWT httpOnly cookie session (7d), brute-force lockout, protected GET /api/admin/enquiries, refresh + sign-out
 - Test enquiries cleaned from DB
+- Removed Heartfulness "one step at a time" section; footer updated to The Travel Planners address + mail@indiahealingretreat.com; website URL and Pearl Hotels line removed from footer
+- Enquiry email CC added to anish@ttpkerala.com (env ENQUIRY_CC_EMAIL) — verified 202 Accepted. Owner mail@indiahealingretreat.com still refused by provider as undeliverable mailbox.
 - Heartfulness "one step at a time" section removed; footer address changed to The Travel Planners, TC 79/1947, Vallakadavu P.O., Trivandrum 695008, Kerala; contact email changed to mail@indiahealingretreat.com
 - KNOWN BLOCKER: email delivery to mail@indiahealingretreat.com fails — Resend proxy rejects the mailbox as "undeliverable_recipient" (domain works: hello@indiahealingretreat.com accepted). OWNER_EMAIL stays dilip.kerala@gmail.com until the mailbox is created; enquiries save to DB/inbox regardless. Re-point OWNER_EMAIL to mail@indiahealingretreat.com once the mailbox exists.
 
